@@ -1,0 +1,65 @@
+#include<iostream>
+
+using namespace std;
+
+void sort(int*,int);
+
+int main()
+{
+
+int arr[5];
+int i,j;
+
+cout << "Enter 50 elements  : " <<  endl;
+
+for(i=0;i<5;i++)
+{
+cin >> arr[i];
+}
+
+sort(arr,5);
+
+/*int temp;
+for(i=0;i<50;i++)
+ {
+  for(j=0;j<49;j++)
+    {
+      if(arr[j]>arr[j+1])
+        {
+           temp=arr[j];
+           arr[j]=arr[j+1];
+           arr[j+1]=temp;
+        }
+    }
+ }
+*/
+cout << "Array after sorting is : " << endl;
+
+for(j=0;j<5;j++)
+{
+cout << arr[j];
+}
+
+return 0;
+}
+
+void sort(int* a,int n)
+{
+
+int temp;
+int i,j;
+
+for(i=0;i<5;i++)
+ {
+  for(j=0;j<4;j++)
+    {
+      if(a[j]>a[j+1])
+        {
+           temp=a[j];
+           a[j]=a[j+1];
+           a[j+1]=temp;
+        }
+    }
+ }
+
+}

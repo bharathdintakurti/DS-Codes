@@ -1,0 +1,67 @@
+#include<iostream>
+
+using namespace std;
+
+void mult(int*,int*,int*,int*);
+
+int main()
+{
+int n1,n2;
+
+cout << "Enter the dimensions of 1st square matrix  :";
+cin >> n1;
+cout << "Enter the dimensions of 2nd square matrix  :";
+cin >> n2;
+
+if(n1==n2)
+
+{int a[n1][n1];
+ int b[n1][n1];
+ int i,j;
+ cout << "Enter the elements of 1st array\n";
+ for(i=0;i<n1;i++)
+  {for(j=0;j<n1;j++)
+     { cin >> a[i][j]; }
+  }
+ cout << "Enter the elements of 2nd array\n";
+  for(i=0;i<n1;i++)
+  {for(j=0;j<n1;j++)
+     { cin >> b[i][j]; }
+  }
+
+
+int p1[n1][n1];
+int p2[n1][n1];
+mult(a,b,p1,n);
+mult(b,a,p2,n1);
+
+for(int h=0;h<n2;h++)
+{
+ 
+ if(p1[h]!=p2[h])
+   { cout << "Not Commutative\n";
+    return 0;}
+}
+cout << "Commutative\n";
+
+}
+else
+{  cout << "Multiplication not possible\n";}
+   return 0;
+}
+
+
+void mult(int* X,int* Y,int* P,int* n)
+{
+
+  
+
+
+
+
+
+
+
+
+}
+
