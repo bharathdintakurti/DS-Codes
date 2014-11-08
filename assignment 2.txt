@@ -1,0 +1,14 @@
+
+QUESTIONS -2/Data structures
+1. Add and subtract two integers
+read from the keyboard, and also calculate the product, quotient, and modulus. Use functions appropriately.
+2.Write a program that gives a
+beginning balance in your savings
+account, and calculates the balance at the end of each quarter. The interest is compounded quarterly . Show the interest earned and balance at the end of each quarter. Present the data in tabular form with appropriate headings.
+Use separate functions to compute
+the interest and print the balance.
+3 Using recursion, write a program
+which calculates the Fibonacci
+series for any n ( entered from KB).
+4.Do the Tower of Hanoi program
+using recursion.
