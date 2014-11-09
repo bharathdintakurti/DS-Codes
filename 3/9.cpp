@@ -57,12 +57,14 @@ for(i=0;i<n;i++)
   }
 }
 
-for(int h=0;h<n;h++)
+for(int i=0;i<n;i++)
 {
- 
- if(p1[h]!=p2[h])
+    for(j=0;j<n;j++)
+{
+ if(p1[i][j]!=p2[i][j])
    { cout << "Not Commutative\n";
     return 0;}
+}
 }
 cout << "Commutative\n";
 

@@ -1,7 +1,6 @@
 #include<iostream>
-#include<iomanip>
 
-#include<cstdlib>
+
 
 using namespace std;
 class node
@@ -9,43 +8,46 @@ class node
 	public:
    	int info;
    	node *next;
+   	node *prev;
 };
 class Queue
 {
-    public:
-		node *rear;
+l    public:
+	node *rear;
         node *front;
-      	Queue()
-      	{
-      		cout<<"\n\t\t QUEUES USING SINGLE LINKED LIST\n";
-  			rear = NULL;
-			front = NULL;
-      	}
+      	Queue();
         void enque();
         void deque();
         void display();
 };
+Queue::Queue()
+{
+  	rear = NULL;
+	front = NULL;
+}
 void Queue::enque()
 {
     int data;
     node *temp = new node;
-    cout<<"\n\nEnter the data to enque: ";
+    cout<<"Enter the data to enqueued: ";
     cin>>data;
     temp->info = data;
     temp->next = NULL;
+	temp->prev=NULL;
     if(front == NULL)
 	{
         front = temp;
 	}
-	else
+    else
 	{
         rear->next = temp;
+	temp->prev=rear;
 	}
     rear = temp;
 }
-void Queue::deque()      
+void Queue::deque()
 {
-    node *temp = new node;          // removing the elements
+    node *temp = new node;
     if(front == NULL)
 	{
         cout<<"\nQueue is Empty\n";
@@ -53,44 +55,47 @@ void Queue::deque()
 	else if(front->next==NULL)
 	{
 		temp = front;
-		cout<<"\n\nThe data REMOVED is "<<front->info<<"\n";
+		cout<<"\nThe data dequeued is "<< front->info <<"\n";
 		front=NULL;
 	}
 	else
 	{
         temp = front;
         front = front->next;
-        cout<<"\n\nThe data REMOVED is "<<temp->info<<"\n";
+        front->prev=NULL;
+        cout<<"\nThe data dequeued is "<<temp->info<<"\n";
         delete temp;
     }
 }
-void Queue::display()   
+void Queue::display()
 {
     node *p = new node;
     p = front;
     if(front == NULL)
 	{
-        cout<<"\n\nNothing to Display\n";
+        cout<<"\nQueue is empty\n";
     }
 	else
 	{
-		cout<<"\n\nTHE ELEMENTS ARE : ";
         while(p!=NULL)
 		{
-            cout<< p->info<<" ";
+            cout<<"\n"<<endl<<p->info<<"\n";
             p = p->next;
         }
     }
-    cout<<"\n";
 }
 
 int main()
 {
     Queue queue;
     int choice;
-    while(1)
+    int flag =0;
+    while(flag!=1)
 	{
-        cout<<"\n1.Enqueue\n2.Dequeue\n3.Display\n4.Quit";
+	cout<<"************Operations on Queues********" << endl;
+
+
+        cout<<"\n\t1.Enqueue\n\t2.Dequeue\n\t3.Display\n\t4.Quit";
         cout<<"\nEnter your choice: ";
         cin>>choice;
         switch(choice)
@@ -105,7 +110,7 @@ int main()
                 queue.display();
                 break;
             case 4:
-                exit(0);
+                flag =1;
                 break;
             default:
                 cout<<"\nInvalid Input. Try again! \n";

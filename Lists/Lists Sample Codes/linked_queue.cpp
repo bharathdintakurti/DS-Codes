@@ -1,8 +1,5 @@
 #include<iostream>
 #include<iomanip>
-
-#include<cstdlib>
-
 using namespace std;
 class node
 {
@@ -25,7 +22,7 @@ class Queue
         void deque();
         void display();
 };
-void Queue::enque()
+void Queue::enque()              // adding the elements
 {
     int data;
     node *temp = new node;
@@ -48,7 +45,7 @@ void Queue::deque()
     node *temp = new node;          // removing the elements
     if(front == NULL)
 	{
-        cout<<"\nQueue is Empty\n";
+        cout<<"\nQueue is Emtpty\n";
 	}
 	else if(front->next==NULL)
 	{
@@ -77,7 +74,7 @@ void Queue::display()
 		cout<<"\n\nTHE ELEMENTS ARE : ";
         while(p!=NULL)
 		{
-            cout<< p->info<<" ";
+            cout<<p->info<<" ";
             p = p->next;
         }
     }
@@ -90,7 +87,7 @@ int main()
     int choice;
     while(1)
 	{
-        cout<<"\n1.Enqueue\n2.Dequeue\n3.Display\n4.Quit";
+        cout<<"\n1.Enqueue\n2. Dequeue\n3. Display\n 4.Quit";
         cout<<"\nEnter your choice: ";
         cin>>choice;
         switch(choice)
