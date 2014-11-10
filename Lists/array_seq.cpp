@@ -173,9 +173,7 @@ class sequen
 
         void display()
             {
-            	int a,b;
-				cout<<"Enter the element : " << endl;
-				cin>>a;
+            	
 				if(isempty())
 				{
 					cout<<"The list is empty\n" <<endl;
@@ -245,11 +243,7 @@ int main()
 
             cout<<"8.Find Element at Rank"<<endl;
 
-            cout<<"9.Is empty\n";
-
-            cout<<"10.Is full\n";
-
-            cout<<"11.Exit "<<endl;
+            cout<<"9.Exit "<<endl;
 
             cout<<"Enter your choice : ";
 

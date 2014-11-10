@@ -654,7 +654,7 @@ int main()
 
             cout<<"8.Reverse display of the list" << endl;
 			
-			cout<<"9.Insert element at rank"<<endl;
+	    cout<<"9.Insert element at rank"<<endl;
 
             cout<<"10.Delete a Particular rank"<<endl;
 

@@ -2,86 +2,75 @@
 
 using namespace std;
 
+void heapify(int *,int);
+void buildheap(int *,int);
+void heapsort(int *,int);
+void swap(int*,int*);
 
-
-int left (int i)
-{
-        return (2*i) ;
-}
-
-int right (int i)
-{
-        return (2*i + 1) ;
-}
-
-void maxheapify(int *a,int i,int heapsize)
-{
-    int l = left(i);
-    int r = right(i);
-    int largest,temp;
-
-    if( l<=heapsize && a[l]>a[i] )
-        largest = l;
-    else largest = r;
-
-    if( r<=heapsize && a[r]>a[largest])
-         largest = r;
-
-    if( largest !=i )
-         {
-
-          temp = a[i];
-          a[i] = a[largest];
-          a[largest] = temp;
-          maxheapify(a,largest,heapsize);
-
-         }
-}
-
-void buildmaxheap(int *a,int heapsize)
-{
-
-    for(int i=heapsize/2;i>=1;i--)
-        maxheapify(a,i,heapsize);
-
-}
-
-void heapsort(int *a,int size)
-{
-    int temp;
-    int heapsize = size;
-    buildmaxheap(a,heapsize);
-
-    for(int i = size;i>=2;i--)
-        {
-         temp = a[0];
-         a[0] = a[i];
-         a[i] = temp;
-         heapsize--;
-         maxheapify(a,0,heapsize);
-        }
-}
-
+    int heapsize;
 
 
 int main()
+    {
+            int n,i;
+            cout << "Enter no. of elements = ";
+            cin >> n;
+            int arr[n];
+            cout << "Enter array elements = ";
+            for(i=0;i<n;i++)
+            {
+
+             cin >> arr[i];
+            }
+
+            heapsort(arr,n);
+            for(i=0;i<n;i++)
+            {
+
+             cout << arr[i];
+            }
+
+        return 0;
+    }
+ void heapsort(int *arr,int len)
+ {
+   int i;
+   buildheap(arr,len);
+    for(i= len-1;i>=1;i--)
+    {
+        swap(&arr[0],&arr[i]);
+        heapsize = heapsize -1;
+        heapify(arr,0);
+    }
+ }
+void heapify(int *arr,int i)
 {
-    int a[11];
-    for(int i=1;i<=10;i++)
+    int l=2*i,r=2*i+1,largest;
+    if(l<heapsize && arr[l]>arr[i])
+        largest = l;
+    else
+        largest = i;
+    if(r<heapsize && arr[r]>arr[largest])
+        largest = r;
+
+    if(largest != i)
     {
-
-        cin >> a[i];
+        swap(&arr[i],&arr[largest]);
+        heapify(arr,largest);
     }
-
-
-    heapsort(a,10);
-    for(int i=1;i<=10;i++)
+     }
+void buildheap(int *arr,int len)
+{
+    heapsize = len;
+    int i;
+    for(i =len/2;i>=0;i--)
     {
-
-        cout << a[i];
+        heapify(arr,i);
     }
-return 0;
-
 }
-
-
+void swap(int *a ,int *b)
+{
+    int temp = *a;
+    *a= *b;
+    *b= temp;
+}

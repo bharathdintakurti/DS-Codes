@@ -1,6 +1,5 @@
 #include<iostream>
-#include<iomanip>
-#include<cstdlib>
+
 using namespace std;
     class node
     {
@@ -8,8 +7,8 @@ using namespace std;
         int info;
         node *next;
         node *prev;
-    }*start,*last;
-    class single_llist
+    }*start;
+    class double_list
     {
 
         public:
@@ -32,7 +31,7 @@ using namespace std;
             
             void rev_display();
 
-            single_llist()
+            double_list()
 
             {
 
@@ -42,7 +41,7 @@ using namespace std;
 
     };
 
-    node *single_llist::create_node(int value)  	// creating the node
+    node *double_list::create_node(int value)  	
 
     {
 
@@ -76,7 +75,7 @@ using namespace std;
 
     }
 
-    void single_llist::insert_begin()       // insert at the begining
+    void double_list::insert_begin()     
 
     {
 
@@ -95,12 +94,9 @@ using namespace std;
         {
 
             start = temp;
-            
             start->prev = NULL;
 
             start->next = NULL;
-            
-            last = temp;
 
         }
 
@@ -111,11 +107,9 @@ using namespace std;
             p = start;
 
             start = temp;
-            
             start->prev = NULL;
 
             start->next = p;
-            
 
         }
 
@@ -124,7 +118,7 @@ using namespace std;
     }
 
 
-    void single_llist::insert_last()        //Inserting value at last
+    void double_list::insert_last()        
 
     {
 
@@ -149,12 +143,8 @@ using namespace std;
         }
 
         temp->next = NULL;
-        
-        temp->prev = s;
 
         s->next = temp;
-        
-        last = temp;
 
         cout<<"\nElement Inserted at last"<<endl;
 
@@ -162,8 +152,7 @@ using namespace std;
 
 
 
-    void single_llist::insert_pos()   //Insertion of value at a given rank
-
+    void double_list::insert_pos()  
     {
 
         int value, pos, counter = 0;
@@ -207,8 +196,6 @@ using namespace std;
                 start->prev = NULL;
 
                 start->next = NULL;
-                
-                 last = temp;
 
             }
 
@@ -244,18 +231,9 @@ using namespace std;
 
             }
 
-           ptr->next = temp;
-
-			temp->prev = ptr;
-
-			s->prev=temp;
+            ptr->next = temp;
 
             temp->next = s;
-
-            if(pos==counter)
-            {
-            	last = s;
-            }
 
         }
 
@@ -270,8 +248,7 @@ using namespace std;
     }
 
 
-void single_llist::remove_pos()     // deleting the position
-
+void double_list::remove_pos()     
     {
 
         int pos, i, counter = 0;
@@ -299,8 +276,6 @@ void single_llist::remove_pos()     // deleting the position
         {
 
             start = s->next;
-
-			start->prev = NULL;
 
         }
 
@@ -336,13 +311,6 @@ void single_llist::remove_pos()     // deleting the position
 
                 ptr->next = s->next;
 
-                s->next->prev = NULL;
-
-            }
-
-            if(pos==counter)
-            {
-            	last = s;
             }
 
             else
@@ -353,7 +321,7 @@ void single_llist::remove_pos()     // deleting the position
 
             }
 
-            free(s);
+            
 
             cout<<"\nElement Deleted"<<endl;
 
@@ -361,8 +329,7 @@ void single_llist::remove_pos()     // deleting the position
 
     }
 
-
-    void single_llist::replace()     //	replace a given value at rank
+    void double_list::replace()    
 
     {
 
@@ -429,7 +396,7 @@ void single_llist::remove_pos()     // deleting the position
     }
 
 
-    void single_llist::ele_atRank()         //	 finding the element at which rank
+    void double_list::ele_atRank()     
 
     {
 
@@ -482,7 +449,7 @@ void single_llist::remove_pos()     // deleting the position
     }
 
 
-void single_llist::display()            // displaying the elements
+void double_list::display()          
 
     {
 
@@ -516,7 +483,7 @@ void single_llist::display()            // displaying the elements
 
     }
     
-    void single_llist::rev_display()            // displaying the elements
+    void double_list::rev_display()            
 
     {
 
@@ -531,24 +498,28 @@ void single_llist::display()            // displaying the elements
             return;
 
         }
-
-        s = start;
-
-        p=last;
         
+        s = start;
+        
+        while(s->next != NULL)
+        {
+        	s=s->next;
+        }
+        p = s;
+
         cout<<"\n\tREVERSE ORDER\nElements of list are: ";
 
-        while (p != start)
+        while (s != NULL)
 
         {
 
-            cout<<p->info<<"->";
+            cout<<s->info<<"->";
 
-            p = p -> prev;
+            s = s -> prev;
 
         }
-
-          cout<<start->info<<"->";
+        
+        cout<<start->info<<"->";
 
         cout<<"NULL"<<endl;
 
@@ -559,17 +530,19 @@ int main()
 {
 	int choice, nodes, element, position, i;
 
-        single_llist sl;
+        double_list sl;
+	
+	int flag =1;
 
         start = NULL;
 
-        while (1)
+        while (flag)
 
         {
 
             cout<<endl<<"---------------------------------"<<endl;
 
-            cout<<endl<<"VECTORS ADT USING DOUBLE LINKED LIST"<<endl;
+            cout<<endl<<"       Position ADT      "<<endl;
 
             cout<<endl<<"---------------------------------"<<endl;
 
@@ -577,15 +550,15 @@ int main()
 
             cout<<"2.Insert element at last"<<endl;
 
-			cout<<"\n\tVECTOR METHODS :\n"<<endl;
+			
 
-            cout<<"\t3.Insert element at rank"<<endl;
+            cout<<"3.Insert element at rank"<<endl;
 
-            cout<<"\t4.Delete a Particular rank"<<endl;
+            cout<<"4.Delete a Particular rank"<<endl;
 
-            cout<<"\t5.replace Value at rank"<<endl;
+            cout<<"5.replace Value at rank"<<endl;
 
-            cout<<"\t6.Find Element at Rank \n"<<endl;
+            cout<<"6.Find Element at Rank "<<endl;
 
             cout<<"7.Display List"<<endl;
             
@@ -661,7 +634,7 @@ int main()
 
                 break;
                 
-			case 8:
+	   case 8:
 
 
                 sl.rev_display();
@@ -674,7 +647,7 @@ int main()
 
                 cout<<"\tExiting..."<<endl;
 
-                exit(1);
+                flag = 0;
 
                 break;
 
