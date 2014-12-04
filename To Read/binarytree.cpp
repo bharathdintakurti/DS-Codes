@@ -3,7 +3,6 @@
 #include<queue>
 #include<cmath>
 
-
 using namespace std;
 
 class node
@@ -23,7 +22,7 @@ class tree : public node
   		tree()
 		{
 
-				int q=0;
+				int q=0,val;
 				node *p=new node;
 				root=p;
 				queue<node*> Q;
@@ -35,7 +34,9 @@ class tree : public node
 							node *current;
 							current = Q.front();
 							Q.pop();
-							current->data=q++;
+							cin >> val;
+							current->data=val;
+							q++;
 							if(q<8)
 							{
 								node *a=new node;
